@@ -37,7 +37,7 @@ public class Task6 {
         double s1=Pool.area;
         Pool.setRadius(4);
         double cash1=(Pool.area-s1)*1000;
-        double cash2=Pool.ference;
+        double cash2=Pool.ference*2000;
         System.out.println("cost of road is "+cash1+" RUB, cost of fence is "+cash2+" RUB");
 
 
