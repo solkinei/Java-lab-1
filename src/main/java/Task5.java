@@ -1,5 +1,3 @@
-import static com.sun.org.apache.xml.internal.security.keys.keyresolver.KeyResolver.length;
-
 class Digits {
     public String[][][] Symbol = {
             {{"", "", "*", "*", "*", "", ""},
