@@ -49,10 +49,7 @@ public class CircleTest {
         a.setRadius(2);
         Circle b = new Circle();
         b.setRadius(3);
-        double delta = 0.01;
-        double expected = 1;
-        double actual = b.deltaRadiuses(a);
-        assertEquals("deltaRadiuses method is not working", expected, actual, delta);
+        assertEquals("deltaRadiuses method is not working", 1, b.deltaRadiuses(a), 0.01);
     }
 
     @Test
@@ -61,9 +58,6 @@ public class CircleTest {
         a.setArea(2);
         Circle b = new Circle();
         b.setArea(3);
-        double delta = 0.01;
-        double expected = 1;
-        double actual = b.deltaAreas(a);
-        assertEquals("deltaAreas method is not working", expected, actual, delta);
+        assertEquals("deltaAreas method is not working", 1, b.deltaAreas(a), 0.01);
     }
 }

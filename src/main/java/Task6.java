@@ -3,11 +3,9 @@ import java.lang.Math;
 public class Task6 {
     public static void main(String[] args) {
         System.out.println("Task \"Earth and rope\"");
-        final double earthRadiusInMeters = 63781000.0;
         double lengthOfRopePiece = 1;
         System.out.print("The distance between earth and rope is ");
-        System.out.printf("%.3f meters\n\n", earthAndRope(earthRadiusInMeters,
-                lengthOfRopePiece));
+        System.out.printf("%.3f meters\n\n", earthAndRope(lengthOfRopePiece));
 
         System.out.println("Task \"Pool\"");
         double radiusOfPool = 3;
@@ -20,9 +18,10 @@ public class Task6 {
         System.out.printf("%.2f rubles\n", costOfCoverage(radiusOfPool, widthOfTrack, priceOfSquareMeter));
     }
 
-    static double earthAndRope(double earthRadius, double lengthOfRopePiece) {
+    static double earthAndRope(double lengthOfRopePiece) {
+        final double earthRadiusInMeters = 63781000.0; //here, because earth radius will not change
         Circle earth = new Circle();
-        earth.setRadius(earthRadius);
+        earth.setRadius(earthRadiusInMeters);
         Circle rope = new Circle();
         rope.setFerence(earth.getFerence() + lengthOfRopePiece);
         return earth.deltaRadiuses(rope);

@@ -1,54 +1,36 @@
 public class Task1 {
     static long maxNumber;
+    static int maxLen;//the result maximum length of Collatz seq.
+    static long num;
+    static long numWithMaxLen;//the result number with the maximum length of Collatz seq.
     public static void main(String[] args) {
         maxNumber = 1000000;
-        Collatz num = new Collatz(maxNumber);
-        num.seqCollatz(num);
-        //num.setNumber(num.seqCollatz(num));
+        maxLen = 0;
+        num = 0;
+        numWithMaxLen = 0;
         System.out.println("The number with maximum length of Collatz seq. " +
-                "for numbers from 1 to " + num.getMaxNumber() + " is " + num.getNumber());
-        System.out.println("The length is " + num.getLength());
+                "for numbers from 1 to " + maxNumber + " is " + seqCollatz(num, maxNumber));
+        System.out.println("The length is " + maxLen);
+    }
+
+
+    static long seqCollatz(long num, long maxNumber){
+//method, returning number and entering maximum length to maxLen
+        int currentLen = 0;
+        for (num = 1; num <= maxNumber; num++) {
+            currentLen = Collatz.findCollatzLength(num);
+            if (currentLen > maxLen) {
+                maxLen = currentLen;
+                numWithMaxLen = num;
+            }
+        }
+        return numWithMaxLen;
     }
 }
 
 class Collatz {
-    private int length;
-    private long number;
-    private long maxNumber;
 
-    public Collatz(long maxNumber){
-//constructor for the class Collatz
-        this.length = 0;
-        this.number = 0;
-        this.maxNumber = maxNumber;
-    }
-
-//getters and setters
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public void setNumber(long number) {
-        this.number = number;
-    }
-
-    public void setMaxNumber(long maxNumber) {
-        this.maxNumber = maxNumber;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public long getNumber() {
-        return number;
-    }
-
-    public long getMaxNumber() {
-        return maxNumber;
-    }
-
-    private int findCollatzLength(long num){
+    public static int findCollatzLength(long num){
 //method for finding the length of Collatz seq for a number "num"
         if (num == 1)//basic task
             return 1;
@@ -58,17 +40,5 @@ class Collatz {
 
         else
             return findCollatzLength(num / 2) + 1;
-    }
-
-    public void seqCollatz(Collatz a){
-//method, returning number and entering maximum length to maxlen
-        int currentLen = 0;
-        for (long num = 2; num <= a.getMaxNumber(); num++) {
-            currentLen = findCollatzLength(num);
-            if (currentLen > a.getLength()) {
-			    a.setLength(currentLen);
-			    a.setNumber(num);
-            }
-        }
     }
 }
