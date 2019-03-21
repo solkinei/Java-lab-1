@@ -100,23 +100,23 @@ public class Task5 {
 
 
     public static void main(String[] args) {
-        number = "098712345";
+        number = "0987543821";
         try {
             printNumber(number);
-        } catch (Exception e) {
+        } catch (TooLargeNumberException e) {
             System.err.println(e.getMessage());
         }
 
     }
 
 
-    static void printNumber(String number) throws Exception {
+    static void printNumber(String number) throws TooLargeNumberException {
         String[] dividedStrings = number.split("");
         int len = dividedStrings.length;
 
         int[] arr = new int[len];
         if (len > 20)
-            throw new Exception("Too long number! Please enter a number with not more than 20 digits.");
+            throw new TooLargeNumberException("Too long number! Please enter a number with not more than 20 digits.");
         for (int i = 0; i < len; i++) {
             arr[i] = Integer.parseInt(dividedStrings[i]);
         }
@@ -133,5 +133,12 @@ public class Task5 {
             }
             System.out.println();
         }
+    }
+}
+
+class TooLargeNumberException extends Exception {
+
+    public TooLargeNumberException(String message) {
+        super(message);
     }
 }
