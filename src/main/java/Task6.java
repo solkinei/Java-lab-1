@@ -19,9 +19,9 @@ public class Task6 {
     }
 
     static double earthAndRope(double lengthOfRopePiece) {
-        final double earthRadiusInMeters = 63781000.0; //here, because earth radius will not change
+        final double EARTH_RAD_IN_METERS = 63781000.0; //here, final, because earth radius cannot be changed
         Circle earth = new Circle();
-        earth.setRadius(earthRadiusInMeters);
+        earth.setRadius(EARTH_RAD_IN_METERS);
         Circle rope = new Circle();
         rope.setFerence(earth.getFerence() + lengthOfRopePiece);
         return earth.deltaRadiuses(rope);
@@ -57,6 +57,8 @@ public class Task6 {
                 this.ference = 2 * Math.PI * radius;
                 this.area = Math.PI * radius * radius;
             }
+            else
+                System.out.println("You entered wrong radius");
         }
 
         public void setFerence(double ference) {
@@ -65,6 +67,8 @@ public class Task6 {
                 this.radius = ference / (2 * Math.PI);
                 this.area = Math.PI * this.radius * this.radius;
             }
+            else
+                System.out.println("You entered wrong ference");
         }
 
         public void setArea(double area) {
@@ -73,6 +77,8 @@ public class Task6 {
                 this.radius = Math.sqrt(area / Math.PI);
                 this.ference = Math.PI * this.radius * 2;
             }
+            else
+                System.out.println("You entered wrong area");
         }
 
         public double getArea() {
