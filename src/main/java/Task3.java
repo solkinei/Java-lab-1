@@ -1,7 +1,7 @@
 public class Task3 {
     static String strForParse;
     public static void main(String[] args) {
-        strForParse = "1,2,4-7,18-21,47-46";
+        strForParse = "1,2,4-7,18-21,46-50,15";
         String strResult = new String();
         try {
             strResult = expandString(strForParse);
@@ -13,29 +13,32 @@ public class Task3 {
     }
 
     static String expandString(String strForParse) throws WrongRangeException{
-        String res = new String();
+
+        StringBuilder myStringBuilder = new StringBuilder();
         String [] dividedStrings = strForParse.split(",");
 
         for (int i = 0; i < dividedStrings.length; i++){
             if (dividedStrings[i].contains("-")){
                 String [] tmpRange = dividedStrings[i].split("-");
 //checking range
-                if (Integer.parseInt(tmpRange[0]) > Integer.parseInt(tmpRange[1])){
+                if (Integer.parseInt(tmpRange[0]) >= Integer.parseInt(tmpRange[1])){
                     //res = "The first number in the range should be less, than the second number!"
                     throw new WrongRangeException("The first number in the range should be less, than the second number!");
                     //return res;
                 }
                 for (int j = Integer.parseInt(tmpRange[0]); j <= Integer.parseInt(tmpRange[1]); j++){
-                    res = res + j + ",";
+                    myStringBuilder = myStringBuilder.append(j);
+                    myStringBuilder = myStringBuilder.append(",");
                 }
             }
-            else
-                res = res + dividedStrings[i] + ",";
+            else {
+                myStringBuilder = myStringBuilder.append(dividedStrings[i]);
+                myStringBuilder = myStringBuilder.append(",");
+            }
         }
+        String res = new String(myStringBuilder);
         return res.substring(0, res.length() - 1);
     }
-
-
 }
 
 class WrongRangeException extends Exception {
