@@ -19,7 +19,6 @@ public class Task5 {
             }
         }
     }
-
     static String[] zero = {
             "  ***  ",
             " *   * ",
