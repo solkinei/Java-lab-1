@@ -44,7 +44,7 @@ public class SqrTTest {
         double val = 1.22;
         SqrT sqrt = new SqrT(val);
         String result = sqrt.calc("#0.00");
-        String r = "1,10";
+        String r = "1.10";
         assertEquals(r, result);
 
     }
